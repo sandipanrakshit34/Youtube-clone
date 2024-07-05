@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube - Home</title>
+    <link rel="shortcut icon" href="../images/youtube/yt-favicon.png" />
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 16px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #0f0f0f;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c8c8c8;
+            border-radius: 100px;
+            border: 4px solid #0f0f0f;
+            background-clip: padding-box;
+        }
+
+        body {
+            color: #fff;
+            background-color: #0f0f0f;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #0f0f0f;
+            margin-top: -5px;
+            margin-left: -15px;
+            position: fixed;
+            width: 100%;
+        }
+
+        header .bi-list {
+            font-size: 22px;
+            background-color: transparent;
+        }
+
+        .input-group {
+            width: 650px;
+        }
+
+        .input-group button {
+            border: 0;
+            width: 60px;
+            background-color: #393939;
+            border-radius: 50px;
+        }
+
+        .form-control {
+            border: none;
+            padding: 7px;
+            font-size: 13px;
+            border-radius: 50px;
+            margin-left: 70px;
+            color: #fff;
+            border: 1px solid #333;
+            box-shadow: none;
+        }
+
+        .form-control::placeholder {
+            color: #fff;
+            font-size: 13px;
+            opacity: 0.5;
+        }
+
+        .form-control[type="text"] {
+            padding: 10px 15px;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+        }
+
+        .mic-button button {
+            background-color: #181818;
+            color: #fff;
+            border: 0;
+            border-radius: 50%;
+            padding: 8px;
+            margin-left: -160px;
+        }
+
+        .user button {
+            background-color: transparent;
+            color: #fff;
+            border: 0;
+            width: 38px;
+            border-radius: 50%;
+            padding: 7px;
+            margin-right: 18px;
+        }
+
+        .user button:nth-child(2) {
+            position: relative;
+            border-radius: 50%;
+            height: 38px;
+            padding: 8px;
+        }
+
+        .user .notification {
+            font-size: 10px;
+            background-color: red;
+            border-radius: 50%;
+            position: relative;
+            top: -30px;
+            left: 10px;
+        }
+
+        .user img {
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+        }
+
+        section {
+            display: grid;
+            grid-template-columns: 1fr 11fr;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 70px;
+            margin-left: -10px;
+        }
+
+        .side-menu button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            color: #fff;
+            border: 0;
+            width: 70px;
+        }
+
+        .side-menu button span {
+            font-size: 20px;
+        }
+
+        .side-menu button p {
+            font-size: 10px;
+        }
+
+        .header-list {
+            position: fixed;
+            width: 100%;
+            top: 65px;
+            background-color: #0f0f0f;
+            padding: 10px;
+        }
+
+        .header-list button {
+            font-size: 13px;
+            margin-right: 1px;
+        }
+
+        section main {
+            margin-left: -30px;
+        }
+
+        .video-list {
+            display: grid;
+            grid-template-columns: 3fr 3fr 3fr 3fr;
+            padding: 40px 10px 5px 0;
+            width: 300px;
+            gap: 20px;
+            margin-top: 100px;
+        }
+
+        .video-list iframe {
+            border-radius: 15px;
+            transition: 0.2s ease-in-out;
+        }
+
+        .video-list iframe:hover {
+            border-radius: 0;
+        }
+
+        .video-list .title {
+            font-size: 15px;
+        }
+
+        .video-list .description {
+            font-size: 13px;
+            display: block;
+            color: lightgray;
+        }
+    </style>
+</head>
+
+<body class="container-fluid">
+    <header>
+        <div>
+            <button class="btn btn-dark bg-transparent border-0"><span class="bi bi-list ms-3"></span></button>
+            <a href="#">
+                <img src="/src/images/youtube-logo.png" width="110" height="70" alt="YouTube Home">
+            </a>
+        </div>
+        <div>
+            <div>
+                <div class="input-group">
+                    <input type="text" class="form-control bg-transparent text-white" placeholder="Search">
+                    <button class="btn btn-dark">
+                        <span class="bi bi-search"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="mic-button">
+            <button class="btn btn-dark">
+                <span class="bi bi-mic-fill ms-1 me-1"></span>
+            </button>
+        </div>
+        <div class="user">
+            <button class="btn btn-dark">
+                <span class="bi bi-camera-video"></span>
+            </button>
+            <button class="btn btn-dark">
+                <span class="bi bi-bell"></span>
+                <p class="notification">10+</p>
+            </button>
+            <button class="btn btn-dark"><span class="bi bi-person-circle"></span></button>
+            <!-- <button><img src="../public/images/youtube/myimg.jpg" alt="Account" width="20" height="20"></button> -->
+        </div>
+    </header>
+    <section>
+        <nav>
+            <div class="side-menu">
+                <button class="btn btn-dark">
+                    <span class="bi bi-house-door-fill"></span>
+                    <p>Home</p>
+                </button>
+                <button class="btn btn-dark">
+                    <span class="bi bi-lightning-charge-fill"></span>
+                    <p>Shorts</p>
+                </button>
+                <button class="btn btn-dark">
+                    <span class="bi bi-compass-fill"></span>
+                    <p>Explore</p>
+                </button>
+                <button class="btn btn-dark">
+                    <span class="bi bi-collection-play-fill"></span>
+                    <p>Subscription</p>
+                </button>
+                <button class="btn btn-dark">
+                    <span class="bi bi-clock-history"></span>
+                    <p>History</p>
+                </button>
+            </div>
+        </nav>
+        <main>
+            <div class="header-list">
+                <button class="btn btn-light">All</button>
+                <button class="btn btn-dark">Music</button>
+                <button class="btn btn-dark">Gaming</button>
+                <button class="btn btn-dark">Mixes</button>
+                <button class="btn btn-dark">Computer program</button>
+                <button class="btn btn-dark">Live</button>
+                <button class="btn btn-dark">JavaScript</button>
+                <button class="btn btn-dark">Anime</button>
+                <button class="btn btn-dark">Doraemon</button>
+                <button class="btn btn-dark">cloud</button>
+                <button class="btn btn-dark">gcloud</button>
+                <button class="btn btn-dark">Game show</button>
+                <button class="btn btn-dark">T-Series</button>
+                <button class="btn btn-dark">Editing</button>
+                <button class="btn btn-dark">Watched</button>
+                <button class="btn btn-dark">New to you</button>
+                <button class="btn btn-dark bi bi-chevron-right bg-transparent border-0"></button>
+            </div>
+            <div class="video-list mb-3">
+                <!-- row - 1 -->
+                <div>
+                    <iframe src="https://www.youtube.com/embed/cw6p3BL05Ng" frameborder="0" width="330"
+                        height="185"></iframe>
+                    <p class="title">Bringing Complete Placement Preparation Course | in 3.5 Months | Alpha 5.0</p>
+                    <p class="description">Apna College <span class="bi bi-check-circle-fill"></span><br>
+                        2.4 lakh views <span class="bi bi-dot"></span> 6 days ago
+                    </p>
+                </div>
+                <div>
+                    <iframe src="https://www.youtube.com/embed/i1QDyK72qEs" frameborder="0" width="330"
+                        height="185"></iframe>
+                    <p class="title">7 BEST CODING COURSES To Become a Software Developer 🔥| Ishan Sharma</p>
+                    <p class="description">Ishan Sharma <span class="bi bi-check-circle-fill"></span><br>
+                        51K views <span class="bi bi-dot"></span> 6 days ago
+                    </p>
+                </div>
+                <div>
+                    <iframe src="https://www.youtube.com/embed/RgD8sDUKn-g" frameborder="0" width="330"
+                        height="185"></iframe>
+                    <p class="title">ROUND 2 HELL ROAST ON THE THUGESH SHOW | S01E06 | @Round2hell</p>
+                    <p class="description">Thugesh <span class="bi bi-check-circle-fill"></span></br>
+                        50 lakh views <span class="bi bi-dot"></span> 2 days ago
+                    </p>
+                </div>
+                <div>
+                    <iframe src="https://www.youtube.com/embed/TUutoMpPEeY" frameborder="0" width="330"
+                        height="185"></iframe>
+                    <p class="title">How i started coding from 0 and cracked Microsoft! 🔥 | My Coding Journey</p>
+                    <p class="description">Nishant Chahar <span class="bi bi-check-circle-fill"></span></br>
+                        1.4 lakh views <span class="bi bi-dot"></span> 4 weeks ago
+                    </p>
+                </div>
+                <div>
+                    <iframe src="https://www.youtube.com/embed/cw6p3BL05Ng" frameborder="0" width="330"
+                        height="185"></iframe>
+                    <p class="title">Bringing Complete Placement Preparation Course | in 3.5 Months | Alpha 5.0</p>
+                    <p class="description">Apna College <span class="bi bi-check-circle-fill"></span><br>
+                        2.4 lakh views <span class="bi bi-dot"></span> 6 days ago
+                    </p>
+                </div>
+                <div>
+                    <iframe src="https://www.youtube.com/embed/i1QDyK72qEs" frameborder="0" width="330"
+                        height="185"></iframe>
+                    <p class="title">7 BEST CODING COURSES To Become a Software Developer 🔥| Ishan Sharma</p>
+                    <p class="description">Ishan Sharma <span class="bi bi-check-circle-fill"></span><br>
+                        51K views <span class="bi bi-dot"></span> 6 days ago
+                    </p>
+                </div>
+                <div>
+                    <iframe src="https://www.youtube.com/embed/RgD8sDUKn-g" frameborder="0" width="330"
+                        height="185"></iframe>
+                    <p class="title">ROUND 2 HELL ROAST ON THE THUGESH SHOW | S01E06 | @Round2hell</p>
+                    <p class="description">Thugesh <span class="bi bi-check-circle-fill"></span></br>
+                        50 lakh views <span class="bi bi-dot"></span> 2 days ago
+                    </p>
+                </div>
+                <div>
+                    <iframe src="https://www.youtube.com/embed/TUutoMpPEeY" frameborder="0" width="330"
+                        height="185"></iframe>
+                    <p class="title">How i started coding from 0 and cracked Microsoft! 🔥 | My Coding Journey</p>
+                    <p class="description">Nishant Chahar <span class="bi bi-check-circle-fill"></span></br>
+                        1.4 lakh views <span class="bi bi-dot"></span> 4 weeks ago
+                    </p>
+                </div>
+                <div>
+                    <iframe src="https://www.youtube.com/embed/cw6p3BL05Ng" frameborder="0" width="330"
+                        height="185"></iframe>
+                    <p class="title">Bringing Complete Placement Preparation Course | in 3.5 Months | Alpha 5.0</p>
+                    <p class="description">Apna College <span class="bi bi-check-circle-fill"></span><br>
+                        2.4 lakh views <span class="bi bi-dot"></span> 6 days ago
+                    </p>
+                </div>
+                <div>
+                    <iframe src="https://www.youtube.com/embed/i1QDyK72qEs" frameborder="0" width="330"
+                        height="185"></iframe>
+                    <p class="title">7 BEST CODING COURSES To Become a Software Developer 🔥| Ishan Sharma</p>
+                    <p class="description">Ishan Sharma <span class="bi bi-check-circle-fill"></span><br>
+                        51K views <span class="bi bi-dot"></span> 6 days ago
+                    </p>
+                </div>
+                <div>
+                    <iframe src="https://www.youtube.com/embed/RgD8sDUKn-g" frameborder="0" width="330"
+                        height="185"></iframe>
+                    <p class="title">ROUND 2 HELL ROAST ON THE THUGESH SHOW | S01E06 | @Round2hell</p>
+                    <p class="description">Thugesh <span class="bi bi-check-circle-fill"></span></br>
+                        50 lakh views <span class="bi bi-dot"></span> 2 days ago
+                    </p>
+                </div>
+                <div>
+                    <iframe src="https://www.youtube.com/embed/TUutoMpPEeY" frameborder="0" width="330"
+                        height="185"></iframe>
+                    <p class="title">How i started coding from 0 and cracked Microsoft! 🔥 | My Coding Journey</p>
+                    <p class="description">Nishant Chahar <span class="bi bi-check-circle-fill"></span></br>
+                        1.4 lakh views <span class="bi bi-dot"></span> 4 weeks ago
+                    </p>
+                </div>
+                <div>
+                    <iframe src="https://www.youtube.com/embed/cw6p3BL05Ng" frameborder="0" width="330"
+                        height="185"></iframe>
+                    <p class="title">Bringing Complete Placement Preparation Course | in 3.5 Months | Alpha 5.0</p>
+                    <p class="description">Apna College <span class="bi bi-check-circle-fill"></span><br>
+                        2.4 lakh views <span class="bi bi-dot"></span> 6 days ago
+                    </p>
+                </div>
+                <div>
+                    <iframe src="https://www.youtube.com/embed/i1QDyK72qEs" frameborder="0" width="330"
+                        height="185"></iframe>
+                    <p class="title">7 BEST CODING COURSES To Become a Software Developer 🔥| Ishan Sharma</p>
+                    <p class="description">Ishan Sharma <span class="bi bi-check-circle-fill"></span><br>
+                        51K views <span class="bi bi-dot"></span> 6 days ago
+                    </p>
+                </div>
+                <div>
+                    <iframe src="https://www.youtube.com/embed/RgD8sDUKn-g" frameborder="0" width="330"
+                        height="185"></iframe>
+                    <p class="title">ROUND 2 HELL ROAST ON THE THUGESH SHOW | S01E06 | @Round2hell</p>
+                    <p class="description">Thugesh <span class="bi bi-check-circle-fill"></span></br>
+                        50 lakh views <span class="bi bi-dot"></span> 2 days ago
+                    </p>
+                </div>
+                <div>
+                    <iframe src="https://www.youtube.com/embed/TUutoMpPEeY" frameborder="0" width="330"
+                        height="185"></iframe>
+                    <p class="title">How i started coding from 0 and cracked Microsoft! 🔥 | My Coding Journey</p>
+                    <p class="description">Nishant Chahar <span class="bi bi-check-circle-fill"></span></br>
+                        1.4 lakh views <span class="bi bi-dot"></span> 4 weeks ago
+                    </p>
+                </div>
+            </div>
+        </main>
+    </section>
+</body>
+
+</html>
